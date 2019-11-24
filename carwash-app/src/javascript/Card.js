@@ -20,7 +20,8 @@ class CardElement extends React.Component {
                             </Card.Title>
                             <hr />
                             <Card.Text>
-                                2018/3 - 
+                                状態：O<br />
+                                前回洗車： 2019/11/18
                             </Card.Text>
                         </Col>
                     </Row>
