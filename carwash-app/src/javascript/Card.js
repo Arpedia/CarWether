@@ -8,10 +8,10 @@ class CardElement extends React.Component {
             <Card style={{ width: '100%', 'margin-top': '2rem' }}>
                 <Card.Body>
                     <Row>
-                        <Col md={4}>
-                            <image src={`${process.env.PUBLIC_URL}/images/lc500.jpg`} className='card-image'></image>
+                        <Col md={4} sm={12} xs={12}>
+                            <img src={`${process.env.PUBLIC_URL}/images/lc500.jpg`} className='card-image'></img>
                         </Col>
-                        <Col md={8}>
+                        <Col md={8} sm={12} xs={12}>
                             <Card.Title>
                                 <Row>
                                     <Col md={6} className="card-title-car">LC500</Col>
@@ -25,6 +25,26 @@ class CardElement extends React.Component {
                             </Card.Text>
                         </Col>
                     </Row>
+                    <hr />
+                    <Card.Title　className="text-left">
+                        <h3>水洗い洗車</h3>
+                    </Card.Title>
+                    <Card.Text>
+                        <Row>
+                            <Col md={12} lg={4}>
+                                目安時期：　12月1日
+                            </Col>
+                            <Col md={12} lg={4}>
+                                前回作業：　11月21日
+                            </Col>
+                            <Col md={8} lg={3}>
+                                作業間隔：　10日
+                            </Col>
+                            <Col md={4} lg={1} className="text-right">
+                                <img src={`${process.env.PUBLIC_URL}/images/icon/edit-24px.svg`} style={{ height: "100%" }}/>
+                            </Col>
+                        </Row>
+                    </Card.Text>
                 </Card.Body>
             </Card>
         );
