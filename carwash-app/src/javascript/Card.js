@@ -8,10 +8,10 @@ class CardElement extends React.Component {
             <Card style={{ width: '100%', 'margin-top': '2rem' }}>
                 <Card.Body>
                     <Row>
-                        <Col md={4} sm={12} xs={12}>
+                        <Col lg={4} md={12} sm={12} xs={12}>
                             <img src={`${process.env.PUBLIC_URL}/images/lc500.jpg`} className='card-image'></img>
                         </Col>
-                        <Col md={8} sm={12} xs={12}>
+                        <Col lg={8} md={12} sm={12} xs={12}>
                             <Card.Title>
                                 <Row>
                                     <Col md={6} className="card-title-car">LC500</Col>
