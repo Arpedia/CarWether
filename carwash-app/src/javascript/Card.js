@@ -21,7 +21,7 @@ class CardElement extends React.Component {
                             <hr />
                             <Card.Text>
                                 状態：O<br />
-                                前回洗車： 2019/11/18
+                                2019/11/18 から7日経過
                             </Card.Text>
                         </Col>
                     </Row>
@@ -35,13 +35,24 @@ class CardElement extends React.Component {
                                 目安時期：　12月1日
                             </Col>
                             <Col md={12} lg={4}>
-                                前回作業：　11月21日
+                                前回作業：　11月18日
                             </Col>
                             <Col md={8} lg={3}>
                                 作業間隔：　10日
                             </Col>
                             <Col md={4} lg={1} className="text-right">
                                 <img src={`${process.env.PUBLIC_URL}/images/icon/edit-24px.svg`} style={{ height: "100%" }}/>
+                            </Col>
+                        </Row>
+                    </Card.Text>
+                    <hr />
+                    <Card.Title className="text-left">
+                        <h3>コーディング状態</h3>
+                    </Card.Title>
+                    <Card.Text>
+                        <Row>
+                            <Col md={12} lg={4}>
+                                ウィンドウガラス
                             </Col>
                         </Row>
                     </Card.Text>
