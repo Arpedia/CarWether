@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Row, Col} from 'react-bootstrap';
+import {Card, Row, Col} from 'react-bootstrap';
 import './../stylesheet/Card.css'
 
 class CardElement extends React.Component {
