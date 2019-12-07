@@ -28,6 +28,11 @@ const drawerTheme = createMuiTheme({
     type: 'dark',
   },
 });
+const AppTheme = createMuiTheme({
+  palette: {
+    type: 'light',
+  },
+});
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -56,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 
 function Header(props) {
   const { container } = props;
-  const theme = useTheme();
+  //const theme = useTheme();
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -69,7 +74,7 @@ function Header(props) {
       <List>
         <ListItem key='Title'>
           <ListItemIcon>
-          <img src={`${process.env.PUBLIC_URL}/favicon.ico`} width='40%' />
+          <img src={`${process.env.PUBLIC_URL}/favicon.ico`} width='40%' alt='icon' />
           </ListItemIcon>
           <ListItemText>
             <Typography variant="h6" noWrap>
@@ -105,7 +110,7 @@ function Header(props) {
   );
 
   return (
-    <div>
+    <ThemeProvider theme={AppTheme}>
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
         <IconButton
@@ -155,7 +160,7 @@ function Header(props) {
       </Hidden>
     </nav>
     </ThemeProvider>
-  </div>
+  </ThemeProvider>
   );
 }
 
