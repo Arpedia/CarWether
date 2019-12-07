@@ -1,9 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CardElement from './Card.js';
-
-const useStyles = makeStyles(makeStyles(theme => ({
-})));
 
 class Body extends React.Component {
   constructor(props){
@@ -30,7 +25,15 @@ class Body extends React.Component {
   }
 
   render() {
-    return (<div></div>);
+    var renderList;
+    if (this.state.page == 'top'){
+      renderList = this.renderTop();
+    }
+    else if(this.state.page == 'info'){
+      renderList = this.renderInfo();
+    }
+
+    return (<div>{renderList}</div>);
   }
 }
 
