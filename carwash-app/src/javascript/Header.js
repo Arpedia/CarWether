@@ -4,21 +4,32 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import { NavCarList } from './CarList';
+// icons
+import MenuIcon from '@material-ui/icons/Menu';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import DescriptionIcon from '@material-ui/icons/Description';
+import ArchiveIcon from '@material-ui/icons/Archive';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 
 const drawerWidth = 240;
 
+const drawerTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
 const useStyles = makeStyles(theme => ({
-  
   drawer: {
     [theme.breakpoints.up('md')]: {
       width: drawerWidth,
@@ -55,25 +66,41 @@ function Header(props) {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
-      <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem key='Title'>
+          <ListItemIcon>
+          <img src={`${process.env.PUBLIC_URL}/favicon.ico`} width='40%' />
+          </ListItemIcon>
+          <ListItemText>
+            <Typography variant="h6" noWrap>
+              Car CC
+            </Typography>
+          </ListItemText>
+        </ListItem>
+      </List>
+      <List>
+        <Divider />
+        <ListItem button key='DashBoard'>
+          <ListItemIcon><DashboardIcon /></ListItemIcon>
+          <ListItemText primary='ダッシュボード' />
+        </ListItem>
+        <Divider />
+        <ListItem button key='CarList'>
+          <ListItemIcon><ListAltIcon /></ListItemIcon>
+          <ListItemText primary='車両一覧' />
+        </ListItem>
+          <NavCarList />
+        <Divider />
+        <ListItem button key='News'>
+          <ListItemIcon><DescriptionIcon /></ListItemIcon>
+          <ListItemText primary='ニュース' />
+        </ListItem>
+        <ListItem button key='Archive'>
+          <ListItemIcon><ArchiveIcon /></ListItemIcon>
+          <ListItemText primary='アーカイブ' />
+        </ListItem>
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 
@@ -91,17 +118,18 @@ function Header(props) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap>
-          Car Care Console
+          {props.title}
         </Typography>
       </Toolbar>
     </AppBar>
+    <ThemeProvider theme={drawerTheme}>
     <nav className={classes.drawer} aria-label="mailbox folders">
     {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       <Hidden mdUp implementation="css">
         <Drawer
           container={container}
           variant="temporary"
-          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+          anchor='left'
           open={mobileOpen}
           onClose={handleDrawerToggle}
           classes={{
@@ -126,6 +154,7 @@ function Header(props) {
         </Drawer>
       </Hidden>
     </nav>
+    </ThemeProvider>
   </div>
   );
 }

@@ -22,7 +22,7 @@ function App() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header />
+      <Header title='Dashboard'/>
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Body />
