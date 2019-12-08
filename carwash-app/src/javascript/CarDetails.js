@@ -53,20 +53,22 @@ const rows = [
   createData('tire-air', 'タイヤ空気圧', '良好', '-'),
 ];
 
+const rowStyle = [
+  {
+    color: 'Green',
+  },
+  {
+    color: 'orange',
+  },
+  {
+    color: 'red',
+  },
+];
+
 function ScoreTable() {
-  const rowStyle = [
-    {
-      color: 'Green',
-    },
-    {
-      color: 'orange',
-    },
-    {
-      color: 'red',
-    },
-  ];
 
   var classes = useStyles();
+
 
   return (
     <Table aria-label="simple table">
@@ -92,9 +94,12 @@ function ScoreTable() {
   );
 }
 
-function CarDetails() {
+function CarDetails(props) {
 
   var classes = useStyles();
+  const {params} = props.match;
+  const id = parseInt(params.id);
+  console.log(props)
 
   return (
   <div>
@@ -103,13 +108,13 @@ function CarDetails() {
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
-              <Paper className={classes.columIconPaper} style={{'background-color': 'lightblue'}}>
+              <Paper className={classes.columIconPaper} style={{backgroundColor: 'lightblue'}}>
                 <LocalCarWashIcon className={classes.columIcon}/>
               </Paper>
             </Grid>
             <Grid item xs={8}>
               <Typography variant="h6">洗車</Typography>
-              <Typography>前回から<span style={{'font-size': '2rem'}}>16</span>日経過</Typography>
+              <Typography>前回から<span style={{fontSize: '2rem'}}>16</span>日経過</Typography>
             </Grid>
           </Grid>
         </Paper>
@@ -118,13 +123,13 @@ function CarDetails() {
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
-              <Paper className={classes.columIconPaper} style={{'background-color': 'lightgreen'}}>
+              <Paper className={classes.columIconPaper} style={{backgroundColor: 'lightgreen'}}>
                 <LocalCarWashIcon className={classes.columIcon}/>
               </Paper>
             </Grid>
             <Grid item xs={8}>
               <Typography variant="h6">コーティング</Typography>
-              <Typography>前回から<span style={{'font-size': '2rem'}}>1</span>か月経過</Typography>
+              <Typography>前回から<span style={{fontSize: '2rem'}}>1</span>か月経過</Typography>
             </Grid>
           </Grid>
         </Paper>
@@ -133,13 +138,13 @@ function CarDetails() {
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
-              <Paper className={classes.columIconPaper} style={{'background-color': 'lightgreen'}}>
+              <Paper className={classes.columIconPaper} style={{backgroundColor: 'lightgreen'}}>
                 <LocalCarWashIcon className={classes.columIcon}/>
               </Paper>
             </Grid>
             <Grid item xs={8}>
               <Typography variant="h6">コーティング</Typography>
-              <Typography>前回から<span style={{'font-size': '2rem'}}>1</span>か月経過</Typography>
+              <Typography>前回から<span style={{fontSize: '2rem'}}>1</span>か月経過</Typography>
             </Grid>
           </Grid>
         </Paper>
