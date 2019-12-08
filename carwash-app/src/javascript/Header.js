@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Route, Link} from 'react-router-dom'; 
 import AppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -57,6 +58,10 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  linkStyle: { 
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 }));
 
 function Header(props) {
@@ -85,25 +90,33 @@ function Header(props) {
       </List>
       <List>
         <Divider />
-        <ListItem button key='DashBoard'>
-          <ListItemIcon><DashboardIcon /></ListItemIcon>
-          <ListItemText primary='ダッシュボード' />
-        </ListItem>
+        <Link to='/' className={classes.linkStyle}>
+          <ListItem button key='DashBoard'>
+            <ListItemIcon><DashboardIcon /></ListItemIcon>
+            <ListItemText primary='ダッシュボード' />
+          </ListItem>
+        </Link>
         <Divider />
-        <ListItem button key='CarList'>
-          <ListItemIcon><ListAltIcon /></ListItemIcon>
-          <ListItemText primary='車両一覧' />
-        </ListItem>
+        <Link to='/carlist' className={classes.linkStyle}>
+          <ListItem button key='CarList'>
+            <ListItemIcon><ListAltIcon /></ListItemIcon>
+            <ListItemText primary='車両一覧' />
+          </ListItem>
+        </Link>
           <NavCarList />
         <Divider />
-        <ListItem button key='News'>
-          <ListItemIcon><DescriptionIcon /></ListItemIcon>
-          <ListItemText primary='ニュース' />
-        </ListItem>
-        <ListItem button key='Archive'>
-          <ListItemIcon><ArchiveIcon /></ListItemIcon>
-          <ListItemText primary='アーカイブ' />
-        </ListItem>
+        <Link to='/news' className={classes.linkStyle}>
+          <ListItem button key='News'>
+            <ListItemIcon><DescriptionIcon /></ListItemIcon>
+            <ListItemText primary='ニュース' />
+          </ListItem>
+        </Link>
+        <Link to='/archives' className={classes.linkStyle}>
+          <ListItem button key='Archive'>
+            <ListItemIcon><ArchiveIcon /></ListItemIcon>
+            <ListItemText primary='アーカイブ' />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
     </div>

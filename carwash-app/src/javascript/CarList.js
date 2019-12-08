@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,15 +12,17 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import { makeStyles, Divider, Button } from '@material-ui/core';
 
 function NavCarList() {
-    return (
-        <ListItem button key='Car'>
-          <ListItemIcon><DriveEtaIcon /></ListItemIcon>
-          <ListItemText primary='CT200h' />
-        </ListItem>
-    )
+  var classes = useStyles();
+
+  return (
+    <Link to='/car/1' className={classes.linkStyle}>
+      <ListItem button key='Car'>
+        <ListItemIcon><DriveEtaIcon /></ListItemIcon>
+        <ListItemText primary='CT200h' />
+      </ListItem>
+    </Link>
+  )
 }
-
-
 
 var useStyles = makeStyles(theme => ({
   listPaper: {
@@ -31,6 +34,10 @@ var useStyles = makeStyles(theme => ({
   },
   carDetailButton: {
     textAlign: 'center',
+  },
+  linkStyle: { 
+    textDecoration: 'none',
+    color: 'inherit',
   },
 }));
 
