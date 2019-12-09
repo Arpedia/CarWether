@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Route, Link} from 'react-router-dom'; 
 import AppBar from '@material-ui/core/AppBar';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -28,6 +29,11 @@ const drawerTheme = createMuiTheme({
     type: 'dark',
   },
 });
+const AppTheme = createMuiTheme({
+  palette: {
+    type: 'light',
+  },
+});
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -52,11 +58,15 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  linkStyle: { 
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 }));
 
 function Header(props) {
   const { container } = props;
-  const theme = useTheme();
+  //const theme = useTheme();
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -69,7 +79,7 @@ function Header(props) {
       <List>
         <ListItem key='Title'>
           <ListItemIcon>
-          <img src={`${process.env.PUBLIC_URL}/favicon.ico`} width='40%' />
+          <img src={`${process.env.PUBLIC_URL}/favicon.ico`} width='40%' alt='icon' />
           </ListItemIcon>
           <ListItemText>
             <Typography variant="h6" noWrap>
@@ -80,32 +90,40 @@ function Header(props) {
       </List>
       <List>
         <Divider />
-        <ListItem button key='DashBoard'>
-          <ListItemIcon><DashboardIcon /></ListItemIcon>
-          <ListItemText primary='ダッシュボード' />
-        </ListItem>
+        <Link to='/' className={classes.linkStyle}>
+          <ListItem button key='DashBoard'>
+            <ListItemIcon><DashboardIcon /></ListItemIcon>
+            <ListItemText primary='ダッシュボード' />
+          </ListItem>
+        </Link>
         <Divider />
-        <ListItem button key='CarList'>
-          <ListItemIcon><ListAltIcon /></ListItemIcon>
-          <ListItemText primary='車両一覧' />
-        </ListItem>
+        <Link to='/carlist' className={classes.linkStyle}>
+          <ListItem button key='CarList'>
+            <ListItemIcon><ListAltIcon /></ListItemIcon>
+            <ListItemText primary='車両一覧' />
+          </ListItem>
+        </Link>
           <NavCarList />
         <Divider />
-        <ListItem button key='News'>
-          <ListItemIcon><DescriptionIcon /></ListItemIcon>
-          <ListItemText primary='ニュース' />
-        </ListItem>
-        <ListItem button key='Archive'>
-          <ListItemIcon><ArchiveIcon /></ListItemIcon>
-          <ListItemText primary='アーカイブ' />
-        </ListItem>
+        <Link to='/news' className={classes.linkStyle}>
+          <ListItem button key='News'>
+            <ListItemIcon><DescriptionIcon /></ListItemIcon>
+            <ListItemText primary='ニュース' />
+          </ListItem>
+        </Link>
+        <Link to='/archives' className={classes.linkStyle}>
+          <ListItem button key='Archive'>
+            <ListItemIcon><ArchiveIcon /></ListItemIcon>
+            <ListItemText primary='アーカイブ' />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
     </div>
   );
 
   return (
-    <div>
+    <ThemeProvider theme={AppTheme}>
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
         <IconButton
@@ -155,7 +173,7 @@ function Header(props) {
       </Hidden>
     </nav>
     </ThemeProvider>
-  </div>
+  </ThemeProvider>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import CarDetails from './CarDetails';
+
 
 class Body extends React.Component {
   constructor(props){
@@ -11,7 +13,7 @@ class Body extends React.Component {
   renderTop() {
     return (
       <div>
-        MainPage
+        <CarDetails />
       </div>
     )
   }
@@ -33,7 +35,11 @@ class Body extends React.Component {
       renderList = this.renderInfo();
     }
 
-    return (<div>{renderList}</div>);
+    return (
+    <div >
+      {renderList}
+    </div>
+    );
   }
 }
 
